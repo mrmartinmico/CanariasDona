@@ -27,3 +27,17 @@ class Categoria(Base):
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, index=True)
     descripcion = Column(String)
+
+class Articulo(Base):
+    __tablename__ = "articulos"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    titulo = Column(String, index=True, nullable=False)
+    descripcion = Column(String, nullable=False)
+    estado = Column(String, default="Disponible", nullable=False)
+    categoria_id = Column(Integer, ForeignKey("categorias.id"), nullable=False)
+    municipio_id = Column(Integer, ForeignKey("municipios.id"), nullable=False)
+    
+    # Relaciones con tablas maestras
+    categoria = relationship("Categoria")
+    municipio = relationship("Municipio")

@@ -43,3 +43,21 @@ class Municipio(MunicipioBase):
 
     class Config:
         from_attributes = True
+
+
+# --- ESQUEMAS PARA ARTÍCULOS (HU-03) ---
+class ArticuloBase(BaseModel):
+    titulo: str
+    descripcion: str
+    categoria_id: int
+    municipio_id: int
+
+class ArticuloCreate(ArticuloBase):
+    pass
+
+class Articulo(ArticuloBase):
+    id: int
+    estado: str
+
+    class Config:
+        from_attributes = True
